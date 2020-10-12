@@ -65,7 +65,7 @@ following defaults:
 
 - Service type (ClusterIP, NodePort, LoadBalancer) made configurable by `.Values.service.type`
 - Named port `http` configured on port 80
-- Selector set to `app: {{ template "common.name" }}, release: {{ .Release.Name }}` to match the default used in the `Deployment` resource
+- Selector set to `app: {{ template "common.name" }}, release: {{ .Release.Name | quote }}` to match the default used in the `Deployment` resource
 
 Example template:
 
@@ -159,7 +159,7 @@ The `common.deployment` template defines a basic `Deployment`. Underneath the
 hood, it uses `common.container` (see next section).
 
 By default, the pod template within the deployment defines the labels `app: {{ template "common.name" . }}`
-and `release: {{ .Release.Name | quote }` as this is also used as the selector. The
+and `release: {{ .Release.Name | quote }}` as this is also used as the selector. The
 standard set of labels are not used as some of these can change during upgrades,
 which causes the replica sets and pods to not correctly match.
 
