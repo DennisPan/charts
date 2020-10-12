@@ -65,7 +65,7 @@ following defaults:
 
 - Service type (ClusterIP, NodePort, LoadBalancer) made configurable by `.Values.service.type`
 - Named port `http` configured on port 80
-- Selector set to `app: {{ template "common.name" }}, release: {{ .Release.Name | quote }}` to match the default used in the `Deployment` resource
+- Selector set to `app: {{ template "common.name" }}, release: {{ .Release.Name }}` to match the default used in the `Deployment` resource
 
 Example template:
 
